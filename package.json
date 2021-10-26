@@ -13,6 +13,7 @@
   "author": "Llorenç Pujol Ferriol",
   "license": "MIT",
   "dependencies": {
+    "keycode": "^2.2.0",
     "pixi.js": "~5.3.3"
   },
   "devDependencies": {
