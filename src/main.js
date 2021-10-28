@@ -9,6 +9,7 @@ import Looper from './main/ticker';
 import FpsCounter from './main/FpsCounter';
 import BasicExperiment from './main/BasicExperiment';
 import BouncyBall from './main/BouncyBall';
+import InputStatusBox from './main/InputStatusBox';
 
 const renderer = initRenderer(document.body, canvasWidth, canvasHeight);
 const stage = new PIXI.Container();
@@ -26,14 +27,23 @@ const formatFps = () =>
     ''+Math.round(fpsCounter.currentFps) + ' | ' + Math.round(fpsCounter.currentDtsFps) + ' | ' + Math.round(fpsCounter.highestDt, 2);
 looper.ticker(dt => document.getElementById('fps').innerText = formatFps());
 
-const basicExperiment = new BasicExperiment();
+// const basicExperiment = new BasicExperiment();
+// looper.ticker(dt => {
+//     basicExperiment.update(dt);
+//     basicExperiment.draw(stage);
+// });
+// const bouncyBall = new BouncyBall(canvasWidth, canvasHeight);
+// looper.ticker(dt => {
+//     bouncyBall.update(dt);
+//     bouncyBall.draw(stage);
+// });
+
+const aBox = new InputStatusBox('a');
 looper.ticker(dt => {
-    basicExperiment.update(dt);
-    basicExperiment.draw(stage);
+    aBox.update(dt);
+    aBox.draw(stage);
 });
-const bouncyBall = new BouncyBall(canvasWidth, canvasHeight);
-looper.ticker(dt => {
-    bouncyBall.update(dt);
-    bouncyBall.draw(stage);
-});
+
+
+
 looper.ticker(dt => renderer.render(stage));
